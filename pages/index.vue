@@ -1,3 +1,5 @@
 <template>
-  <div>Hello world</div>
+  <a-button type="primary">
+    Primary
+  </a-button>
 </template>

@@ -7,6 +7,10 @@
     "start": "nuxt start"
   },
   "dependencies": {
+    "ant-design-vue": "^1.6.5",
     "nuxt": "^2.14.4"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.0"
   }
 }
