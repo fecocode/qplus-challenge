@@ -5,9 +5,9 @@
         <img src="/qplus-logo.png" alt="qplus-logo">
       </div>
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-        <a-menu-item key="1">
-          <a-icon type="tool" />
-          <span>Work Orders</span>
+        <a-menu-item v-for="(item, index) in menuItems" :key="index" @click="redirect(item.link)">
+          <a-icon :type="item.icon" />
+          <span>{{item.name}}</span>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -50,8 +50,20 @@ export default {
   data() {
     return {
       collapsed: false,
+      menuItems: [
+        {
+          name: 'Work Orders',
+          icon: 'tool',
+          link: 'work-orders'
+        }
+      ]
     };
   },
+  methods: {
+    redirect(link){
+      this.$router.push(link);
+    }
+  }
 };
 </script>
 <style>
