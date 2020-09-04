@@ -1,5 +1,5 @@
 <template>
   <a-button type="primary">
-    Primary
+    Fecocode
   </a-button>
 </template>
