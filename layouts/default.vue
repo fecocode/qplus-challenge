@@ -2,7 +2,9 @@
   <a-layout id="layout">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo">
-        <img src="/qplus-logo.png" alt="qplus-logo">
+        <n-link to="/">
+          <img src="/qplus-logo.png" alt="qplus-logo">
+        </n-link>
       </div>
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item v-for="(item, index) in menuItems" :key="index" @click="redirect(item.link)">
@@ -69,7 +71,8 @@ export default {
 <style>
 
 #layout {
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 #layout .header {
@@ -104,6 +107,7 @@ export default {
   margin: 2em 1em;
   padding: 2em;
   background: #fff;
+  height: fit-content;
 }
 
 #layout .trigger {
