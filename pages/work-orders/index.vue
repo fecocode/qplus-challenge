@@ -132,6 +132,9 @@ const data = [
 ];
 
 export default {
+  meta: {
+    test: 3,
+  },
   data() {
     return {
       data,
@@ -220,6 +223,9 @@ export default {
       this.searchText = '';
     },
   },
+  fetch(){
+    console.log('fetch');
+  }
 };
 </script>
 <style scoped>

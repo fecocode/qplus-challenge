@@ -36,8 +36,10 @@
         </div>
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
-        <a-breadcrumb-item>level1</a-breadcrumb-item>
-        <a-breadcrumb-item>level2</a-breadcrumb-item>
+        <n-link to="/">
+          <a-breadcrumb-item>Inicio</a-breadcrumb-item>
+        </n-link>
+        <a-breadcrumb-item>Work orders</a-breadcrumb-item>
       </a-breadcrumb>
       <a-layout-content
         class="content"
@@ -65,7 +67,9 @@ export default {
     redirect(link){
       this.$router.push(link);
     }
-  }
+  },
+  computed: {
+  },
 };
 </script>
 <style>
@@ -104,7 +108,7 @@ export default {
 }
 
 #layout .content{
-  margin: 2em 1em;
+  margin: .5em 1em;
   padding: 2em;
   background: #fff;
   height: fit-content;
