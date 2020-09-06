@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const _http = (url) => {
+export const _http = (url, method) => {
   return axios({
-    method: 'POST',
+    method,
+    url,
     data: {
       'ExternalWO': 'SUITE002'
     },
@@ -13,6 +14,5 @@ export const _http = (url) => {
       "cache-control": "no-cache",
       "WorkShopId": "POer36/XCETlysataT9KEg==",
     },    
-    url,
   })
 }

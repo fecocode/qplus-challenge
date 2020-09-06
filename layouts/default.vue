@@ -39,7 +39,9 @@
         <n-link to="/">
           <a-breadcrumb-item>Inicio</a-breadcrumb-item>
         </n-link>
+        <n-link to="/work-orders">
         <a-breadcrumb-item>Work orders</a-breadcrumb-item>
+        </n-link>
       </a-breadcrumb>
       <a-layout-content
         class="content"

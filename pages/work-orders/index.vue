@@ -183,5 +183,6 @@ export default {
 
 .work-order{
   cursor: pointer;
+  width: 110%;
 }
 </style>
