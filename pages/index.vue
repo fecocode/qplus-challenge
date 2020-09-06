@@ -5,7 +5,7 @@
     <a-icon type="rocket" theme="twoTone" class="rocket"/>
     <a-icon type="cloud" theme="twoTone" class="cloud-3" />
     <hr>
-    <span><b>¡Bienvenidos!</b></span>
+    <span><b>{{$t('welcome')}}</b></span>
   </div>
 </template>
 

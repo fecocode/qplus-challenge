@@ -2,13 +2,13 @@
   <div class="container">
     <template v-if="error.statusCode === 404">
       <a-icon type="meh" theme="twoTone" class="icon"/>
-      <h1 >No encontramos la página solicitada</h1>
-      <NuxtLink to="/">Ir a la página principal</NuxtLink>
+      <h1 >{{$t('notFound')}}</h1>
+      <NuxtLink to="/">{{$t('goHome')}}</NuxtLink>
     </template>
     <template v-if="error.statusCode === 500">
       <a-icon type="exclamation-circle" theme="twoTone" class="icon"/>
-      <h1 >Ocurrió un error al obtener los datos</h1>
-      <NuxtLink :to="error.retryLink">Reintentar</NuxtLink>
+      <h1 >{{$t('dataError')}}</h1>
+      <NuxtLink :to="error.retryLink">{{$t('retry')}}</NuxtLink>
     </template>
   </div>
 </template>

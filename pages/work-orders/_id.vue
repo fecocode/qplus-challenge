@@ -3,20 +3,20 @@
     <template slot="actions" class="ant-card-actions">
       <div @click="goBack()">
         <a-icon key="goback" type="arrow-left"/>
-        <span>Volver</span>
+        <span>{{$t('goBack')}}</span>
       </div>
       <div class="disabled">
         <a-icon key="edit" type="edit"/>
-        <span>Editar</span>
+        <span>{{$t('edit')}}</span>
       </div>
       <div class="disabled">
         <a-icon key="options" type="ellipsis"/>
-        <span>Más opciones</span>
+        <span>{{$t('moreOptions')}}</span>
       </div>
     </template>
     <a-skeleton active :paragraph="{ rows: 1 }" :loading="!workOrder">
       <a-card-meta 
-        :title="`Orden N°: ${ workOrder ? workOrder.orderNumber : ''}`" 
+        :title="`${$t('order')} N°: ${ workOrder ? workOrder.orderNumber : ''}`" 
         :description="workOrder ? workOrder.description : ''">
       </a-card-meta>
     </a-skeleton>
@@ -24,7 +24,7 @@
     
     <a-skeleton active :paragraph="{ rows: 0 }" :loading="!workOrder">
       <p>
-        Iniciada: {{workOrder ? workOrder.dateStart : ''}}
+        {{workOrder ? `${$t('startDate')}: ${workOrder.dateStart}` : ''}}
       </p>
     </a-skeleton>
   </a-card>
@@ -44,15 +44,15 @@ export default {
   meta: {
     breadcrumbs: [
       {
-        name: 'Inicio',
+        name: 'home',
         link: '/'
       },
       {
-        name: 'Work orders',
+        name: 'workOrders',
         link: '/work-orders'
       },
       {
-        name: 'Detail',
+        name: 'detail',
         link: ''
       }
     ]

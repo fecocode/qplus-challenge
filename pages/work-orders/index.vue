@@ -12,7 +12,7 @@
     >
       <a-input
         v-ant-ref="c => (searchInput = c)"
-        :placeholder="`Search ${column.dataIndex}`"
+        :placeholder="column.title"
         :value="selectedKeys[0]"
         style="width: 188px; margin-bottom: 8px; display: block;"
         @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
@@ -25,10 +25,10 @@
         style="width: 90px; margin-right: 8px"
         @click="() => handleSearch(selectedKeys, confirm, column.dataIndex)"
       >
-        Search
+        {{$t('search')}}
       </a-button>
       <a-button size="small" style="width: 90px" @click="() => handleReset(clearFilters)">
-        Reset
+        {{$t('reset')}}
       </a-button>
     </div>
     <a-icon
@@ -79,11 +79,11 @@ export default {
   meta: {
     breadcrumbs: [
       {
-        name: 'Inicio',
+        name: 'home',
         link: '/'
       },
       {
-        name: 'Work orders',
+        name: 'workOrders',
         link: '/work-orders'
       },
     ]
@@ -100,7 +100,7 @@ export default {
       columns: [
         
         {
-          title: 'Número de orden',
+          title: this.$t('orderNumber'),
           dataIndex: 'orderNumber',
           key: 'orderNumber',
           scopedSlots: {
@@ -122,7 +122,7 @@ export default {
           },
         },
         {
-          title: 'Descripción',
+          title: this.$t('description'),
           dataIndex: 'description',
           key: 'description',
           scopedSlots: {
@@ -144,7 +144,7 @@ export default {
           },
         },
         {
-          title: 'Fecha de inicio',
+          title: this.$t('startDate'),
           dataIndex: 'dateStart',
           key: 'dateStart',
           scopedSlots: {

@@ -21,8 +21,18 @@
           @click="() => (collapsed = !collapsed)"
         />
         <div>
+          <nuxt-link
+            class="normal-link"
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            :to="switchLocalePath(locale.code)">
+            <a-icon type="sync" />
+            {{ `${$t('language')} '${locale.name}'` }}
+          </nuxt-link>
+        </div>
+        <div>
           <span>
-            Demo desarrollada por Feco
+            {{$t('demo')}}
           </span>
           <a href="https://twitter.com/fecocode" target="_blank">
             <a-icon type="twitter-circle" theme="filled" />
@@ -37,7 +47,7 @@
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
         <n-link :to="breadcrumb ? breadcrumb.link : ''" v-for="(breadcrumb, index) in breadcrumbs" :key="`b-${index}`">
-          <a-breadcrumb-item>{{breadcrumb ? breadcrumb.name : ''}}</a-breadcrumb-item>
+          <a-breadcrumb-item>{{breadcrumb ? $t(breadcrumb.name) : ''}}</a-breadcrumb-item>
         </n-link>        
       </a-breadcrumb>
       <a-layout-content
@@ -55,7 +65,7 @@ export default {
       collapsed: false,
       menuItems: [
         {
-          name: 'Work Orders',
+          name: this.$t('workOrders'),
           icon: 'tool',
           link: '/work-orders'
         }
@@ -70,8 +80,13 @@ export default {
   computed: {
     breadcrumbs(){
       return this.$store.state.breadcrumbs;
+    },
+    availableLocales () {
+      console.log(this.$i18n.locales)
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
     }
   },
+  
 };
 </script>
 <style>
@@ -103,6 +118,10 @@ export default {
 #layout .header div a {
   font-size: 1.5em;
   margin: 0 5px;
+}
+
+#layout .header div .normal-link {
+  font-size: 1em !important;
 }
 
 #layout .breadcrumb {
