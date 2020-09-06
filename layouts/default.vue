@@ -58,7 +58,7 @@ export default {
         {
           name: 'Work Orders',
           icon: 'tool',
-          link: 'work-orders'
+          link: '/work-orders'
         }
       ]
     };

@@ -1,5 +1,5 @@
 <template>
-  <a-table :data-source="data" :columns="columns">
+  <a-table :data-source="workOrders" :columns="columns">
     <div
       slot="filterDropdown"
       slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
@@ -33,7 +33,7 @@
       :style="{ color: filtered ? '#108ee9' : undefined }"
     />
     <template slot="customRender" slot-scope="text, record, index, column">
-      <span v-if="searchText && searchedColumn === column.dataIndex">
+      <span v-if="searchText && searchedColumn === column.dataIndex" class="work-order">
         <template
           v-for="(fragment, i) in text
             .toString()
@@ -43,116 +43,53 @@
             v-if="fragment.toLowerCase() === searchText.toLowerCase()"
             :key="i"
             class="highlight"
-            >{{ fragment }}</mark
-          >
+            >{{ fragment }}</mark>
           <template v-else>{{ fragment }}</template>
         </template>
       </span>
       <template v-else>
-        {{ text }}
+        <div class="work-order" @click="goToOrder(record.key)">{{ text }}</div>
       </template>
     </template>
   </a-table>
 </template>
 
 <script>
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '2',
-    name: 'Joe Black',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '3',
-    name: 'Jim Green',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  },
-  {
-    key: '5',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '6',
-    name: 'Joe Black',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '7',
-    name: 'Jim Green',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '8',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  },
-  {
-    key: '9',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '10',
-    name: 'Joe Black',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '11',
-    name: 'Jim Green',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-  },
-  {
-    key: '12',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
-  },
-];
+
+import services from '~/services';
+import helpers from '~/helpers';
+
+const {
+  workOrdersService,
+
+} = services;
+
+const {
+  workOrdersFormatter,
+} = helpers;
+
 
 export default {
-  meta: {
-    test: 3,
-  },
+  
   data() {
     return {
-      data,
+      workOrders: [],
       searchText: '',
       searchInput: null,
       searchedColumn: '',
       columns: [
+        
         {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
+          title: 'Número de orden',
+          dataIndex: 'orderNumber',
+          key: 'orderNumber',
           scopedSlots: {
             filterDropdown: 'filterDropdown',
             filterIcon: 'filterIcon',
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.name
+            record.orderNumber
               .toString()
               .toLowerCase()
               .includes(value.toLowerCase()),
@@ -165,16 +102,16 @@ export default {
           },
         },
         {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
+          title: 'Descripción',
+          dataIndex: 'description',
+          key: 'description',
           scopedSlots: {
             filterDropdown: 'filterDropdown',
             filterIcon: 'filterIcon',
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.age
+            record.description
               .toString()
               .toLowerCase()
               .includes(value.toLowerCase()),
@@ -187,16 +124,16 @@ export default {
           },
         },
         {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
+          title: 'Fecha de inicio',
+          dataIndex: 'dateStart',
+          key: 'dateStart',
           scopedSlots: {
             filterDropdown: 'filterDropdown',
             filterIcon: 'filterIcon',
             customRender: 'customRender',
           },
           onFilter: (value, record) =>
-            record.address
+            record.dateStart
               .toString()
               .toLowerCase()
               .includes(value.toLowerCase()),
@@ -222,9 +159,19 @@ export default {
       clearFilters();
       this.searchText = '';
     },
+
+    goToOrder(id){
+      this.$router.push(`/work-orders/${id}`);
+    }
   },
-  fetch(){
-    console.log('fetch');
+
+  async fetch() {
+    try {
+      const workOrdersRaw = await workOrdersService.getAll();
+      this.workOrders = workOrdersRaw.data.list.map(wo => workOrdersFormatter(wo));
+    }catch (err) {
+      console.log(err)
+    }
   }
 };
 </script>
@@ -232,5 +179,9 @@ export default {
 .highlight {
   background-color: rgb(255, 192, 105);
   padding: 0px;
+}
+
+.work-order{
+  cursor: pointer;
 }
 </style>

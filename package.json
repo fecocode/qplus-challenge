@@ -9,6 +9,7 @@
   "dependencies": {
     "ant-design-vue": "^1.6.5",
     "axios": "^0.20.0",
+    "moment": "^2.27.0",
     "nuxt": "^2.14.4"
   },
   "devDependencies": {
