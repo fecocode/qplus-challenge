@@ -36,12 +36,9 @@
         </div>
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
-        <n-link to="/">
-          <a-breadcrumb-item>Inicio</a-breadcrumb-item>
-        </n-link>
-        <n-link to="/work-orders">
-        <a-breadcrumb-item>Work orders</a-breadcrumb-item>
-        </n-link>
+        <n-link :to="breadcrumb ? breadcrumb.link : ''" v-for="(breadcrumb, index) in breadcrumbs" :key="`b-${index}`">
+          <a-breadcrumb-item>{{breadcrumb ? breadcrumb.name : ''}}</a-breadcrumb-item>
+        </n-link>        
       </a-breadcrumb>
       <a-layout-content
         class="content"
@@ -62,7 +59,7 @@ export default {
           icon: 'tool',
           link: '/work-orders'
         }
-      ]
+      ],
     };
   },
   methods: {
@@ -71,6 +68,9 @@ export default {
     }
   },
   computed: {
+    breadcrumbs(){
+      return this.$store.state.breadcrumbs;
+    }
   },
 };
 </script>

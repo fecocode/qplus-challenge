@@ -14,12 +14,19 @@
         <span>Más opciones</span>
       </div>
     </template>
-    <a-card-meta :title="`Orden N°: ${ workOrder ? workOrder.orderNumber : ''}`" :description="workOrder ? workOrder.description : ''">
-    </a-card-meta>
+    <a-skeleton active :paragraph="{ rows: 1 }" :loading="!workOrder">
+      <a-card-meta 
+        :title="`Orden N°: ${ workOrder ? workOrder.orderNumber : ''}`" 
+        :description="workOrder ? workOrder.description : ''">
+      </a-card-meta>
+    </a-skeleton>
     <a-divider/>
-    <p>
-      Iniciada: {{workOrder ? workOrder.dateStart : ''}}
-    </p>
+    
+    <a-skeleton active :paragraph="{ rows: 0 }" :loading="!workOrder">
+      <p>
+        Iniciada: {{workOrder ? workOrder.dateStart : ''}}
+      </p>
+    </a-skeleton>
   </a-card>
 </template>
 
@@ -34,6 +41,22 @@ const { workOrdersFormatter } = helpers;
 
 export default {
   name: 'workOrderDetail',
+  meta: {
+    breadcrumbs: [
+      {
+        name: 'Inicio',
+        link: '/'
+      },
+      {
+        name: 'Work orders',
+        link: '/work-orders'
+      },
+      {
+        name: 'Detail',
+        link: ''
+      }
+    ]
+  },
   data(){
     return {
       workOrder: null,
@@ -45,7 +68,7 @@ export default {
       const workOrderRaw = await workOrdersService.getById(id);
       this.workOrder = workOrdersFormatter(workOrderRaw.data.task);
     } catch (err) {
-      console.log(err);
+      this.$nuxt.error({statusCode: 500, retryLink:`/work-orders/${id}`});
     }
     
   },

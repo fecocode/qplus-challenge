@@ -1,5 +1,10 @@
 <template>
-  <a-table :data-source="workOrders" :columns="columns">
+  <div v-if="loading" class="container">
+    <a-spin>
+      <a-icon slot="indicator" type="loading" spin  class="spin"/>
+    </a-spin>
+  </div>
+  <a-table :data-source="workOrders" :columns="columns" v-else>
     <div
       slot="filterDropdown"
       slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
@@ -70,9 +75,24 @@ const {
 
 
 export default {
+
+  meta: {
+    breadcrumbs: [
+      {
+        name: 'Inicio',
+        link: '/'
+      },
+      {
+        name: 'Work orders',
+        link: '/work-orders'
+      },
+    ]
+  },
   
   data() {
     return {
+      loading: true,
+
       workOrders: [],
       searchText: '',
       searchInput: null,
@@ -170,7 +190,9 @@ export default {
       const workOrdersRaw = await workOrdersService.getAll();
       this.workOrders = workOrdersRaw.data.list.map(wo => workOrdersFormatter(wo));
     }catch (err) {
-      console.log(err)
+      this.$nuxt.error({statusCode: 500, retryLink:'/work-orders'});
+    }finally {
+      this.loading = false;
     }
   }
 };
@@ -184,5 +206,17 @@ export default {
 .work-order{
   cursor: pointer;
   width: 110%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spin {
+  font-size: 50px;
 }
 </style>
