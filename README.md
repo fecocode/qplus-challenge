@@ -1,6 +1,6 @@
 # QPLUS CHALLENGE
 
-[__Live demo__]('https://qpluschallenge.vercel.app')
+(__Live demo__)['https://qpluschallenge.vercel.app']
 
 ## ¿Cómo correr el proyecto?
 ---
