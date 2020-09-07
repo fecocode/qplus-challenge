@@ -23,7 +23,7 @@ module.exports = {
       }
     ],
     defaultLocale: 'es',
-    // strategy: 'prefix_and_default',
+    strategy: 'prefix_and_default',
     vueI18n: {
       fallbackLocale: 'en',
       messages:{
