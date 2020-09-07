@@ -2,7 +2,7 @@
   <a-layout id="layout">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo">
-        <n-link to="/">
+        <n-link :to="{name: `index___${$i18n.locale}`}">
           <img src="/qplus-logo.png" alt="qplus-logo">
         </n-link>
       </div>
@@ -46,7 +46,7 @@
         </div>
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
-        <n-link :to="breadcrumb ? breadcrumb.link : ''" v-for="(breadcrumb, index) in breadcrumbs" :key="`b-${index}`">
+        <n-link :to="breadcrumb && index < breadcrumbs.length - 1 ? {name: breadcrumb.link} : ''" v-for="(breadcrumb, index) in breadcrumbs" :key="`b-${index}`">
           <a-breadcrumb-item>{{breadcrumb ? $t(breadcrumb.name) : ''}}</a-breadcrumb-item>
         </n-link>        
       </a-breadcrumb>
@@ -63,18 +63,11 @@ export default {
   data() {
     return {
       collapsed: false,
-      menuItems: [
-        {
-          name: this.$t('workOrders'),
-          icon: 'tool',
-          link: '/work-orders'
-        }
-      ],
     };
   },
   methods: {
     redirect(link){
-      this.$router.push(link);
+      this.$router.push({name:link});
     }
   },
   computed: {
@@ -82,9 +75,17 @@ export default {
       return this.$store.state.breadcrumbs;
     },
     availableLocales () {
-      console.log(this.$i18n.locales)
       return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-    }
+    },
+    menuItems(){
+      return [
+        {
+          name: this.$t('workOrders'),
+          icon: 'tool',
+          link: `work-orders___${this.$i18n.locale}`
+        }
+      ]
+    } 
   },
   
 };

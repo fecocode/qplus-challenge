@@ -45,15 +45,15 @@ export default {
     breadcrumbs: [
       {
         name: 'home',
-        link: '/'
+        link: 'index'
       },
       {
         name: 'workOrders',
-        link: '/work-orders'
+        link: 'work-orders'
       },
       {
         name: 'detail',
-        link: ''
+        link: 'work-orders-id'
       }
     ]
   },
@@ -68,13 +68,13 @@ export default {
       const workOrderRaw = await workOrdersService.getById(id);
       this.workOrder = workOrdersFormatter(workOrderRaw.data.task);
     } catch (err) {
-      this.$nuxt.error({statusCode: 500, retryLink:`/work-orders/${id}`});
+      this.$nuxt.error({statusCode: 500});
     }
     
   },
   methods: {
     goBack(){
-      this.$router.push('/work-orders');
+      this.$router.push({name:`work-orders___${this.$i18n.locale}`});
     }
   }
 }

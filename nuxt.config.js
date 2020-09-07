@@ -1,4 +1,5 @@
 module.exports = {
+  head: {title: 'Qplus Challenge'},
   target: 'static',
   components: true,
   css: ['ant-design-vue/dist/antd.css', '~/assets/main.css'],
@@ -14,14 +15,15 @@ module.exports = {
     locales: [
       {
         code: 'es',
-        name: 'Spanish'
+        name: 'Español'
       },
       {
         code: 'en',
-        name: 'Inglés'
+        name: 'English'
       }
     ],
     defaultLocale: 'es',
+    // strategy: 'prefix_and_default',
     vueI18n: {
       fallbackLocale: 'en',
       messages:{
@@ -44,7 +46,7 @@ module.exports = {
           demo: 'Demo developed by Feco',
           search: 'Search',
           reset: 'Reset',
-          language: 'Change language to',
+          language: 'Cambiar idioma a',
         },
         es: {
           welcome: 'Bienvenidos',
@@ -58,14 +60,14 @@ module.exports = {
           goBack: 'Volver',
           edit: 'Editar',
           moreOptions: 'Más opciones',
-          notFound: 'La página soliciata no fue encontrada',
+          notFound: 'La página solicitada no fue encontrada',
           goHome: 'Ir a la página principal',
           dataError: 'Un error ocurrió al obtener los datos',
           retry: 'Reintentar',
           demo: 'Demo desarrollada por Feco',
           search: 'Buscar',
           reset: 'Limpiar',
-          language: 'Cambiar idioma a',
+          language: 'Change language to',
         }
       }
     }

@@ -80,11 +80,11 @@ export default {
     breadcrumbs: [
       {
         name: 'home',
-        link: '/'
+        link: 'index'
       },
       {
         name: 'workOrders',
-        link: '/work-orders'
+        link: 'work-orders'
       },
     ]
   },
@@ -181,7 +181,7 @@ export default {
     },
 
     goToOrder(id){
-      this.$router.push(`/work-orders/${id}`);
+      this.$router.push({name:`work-orders-id___${this.$i18n.locale}`, params:{id}});
     }
   },
 
@@ -190,7 +190,7 @@ export default {
       const workOrdersRaw = await workOrdersService.getAll();
       this.workOrders = workOrdersRaw.data.list.map(wo => workOrdersFormatter(wo));
     }catch (err) {
-      this.$nuxt.error({statusCode: 500, retryLink:'/work-orders'});
+      this.$nuxt.error({statusCode: 500, retry:{name:`work-orders___${this.$i18n.locale}`}});
     }finally {
       this.loading = false;
     }

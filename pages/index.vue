@@ -9,6 +9,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  meta:{
+    breadcrumbs:[
+      {
+        name: 'home',
+        link: 'index'
+      }
+    ]
+  }
+}
+</script>
+
+
 <style scoped>
 
 #welcome {

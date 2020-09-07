@@ -2,7 +2,7 @@ export const state = () => ({
   breadcrumbs: [
     {
       name: 'Inicio',
-      link: '/'
+      link: 'index___es'
     },
   ],
 })

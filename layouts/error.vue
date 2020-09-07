@@ -3,12 +3,12 @@
     <template v-if="error.statusCode === 404">
       <a-icon type="meh" theme="twoTone" class="icon"/>
       <h1 >{{$t('notFound')}}</h1>
-      <NuxtLink to="/">{{$t('goHome')}}</NuxtLink>
+      <NuxtLink :to="{name:`index___${$i18n.locale}`}">{{$t('goHome')}}</NuxtLink>
     </template>
     <template v-if="error.statusCode === 500">
       <a-icon type="exclamation-circle" theme="twoTone" class="icon"/>
       <h1 >{{$t('dataError')}}</h1>
-      <NuxtLink :to="error.retryLink">{{$t('retry')}}</NuxtLink>
+      <NuxtLink :to="{name:`index___${$i18n.locale}`}">{{$t('goHome')}}</NuxtLink>
     </template>
   </div>
 </template>
