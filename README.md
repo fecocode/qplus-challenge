@@ -1,7 +1,3 @@
-# QPLUS CHALLENGE
-
-[Live demo](https://qpluschallenge.vercel.app)
-
 ## ¿Cómo correr el proyecto?
 ---
 ### Instrucciones:
