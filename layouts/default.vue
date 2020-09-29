@@ -2,14 +2,18 @@
   <a-layout id="layout">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
       <div class="logo">
-        <n-link :to="{name: `index___${$i18n.locale}`}">
-          <img src="/qplus-logo.png" alt="qplus-logo">
+        <n-link :to="{ name: `index___${$i18n.locale}` }">
+          <img src="/qplus-logo.png" alt="qplus-logo" />
         </n-link>
       </div>
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
-        <a-menu-item v-for="(item, index) in menuItems" :key="index" @click="redirect(item.link)">
+        <a-menu-item
+          v-for="(item, index) in menuItems"
+          :key="index"
+          @click="redirect(item.link)"
+        >
           <a-icon :type="item.icon" />
-          <span>{{item.name}}</span>
+          <span>{{ item.name }}</span>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -25,14 +29,15 @@
             class="normal-link"
             v-for="locale in availableLocales"
             :key="locale.code"
-            :to="switchLocalePath(locale.code)">
+            :to="switchLocalePath(locale.code)"
+          >
             <a-icon type="sync" />
-            {{ `${$t('language')} '${locale.name}'` }}
+            {{ `${$t("language")} '${locale.name}'` }}
           </nuxt-link>
         </div>
         <div>
           <span>
-            {{$t('demo')}}
+            {{ $t("demo") }}
           </span>
           <a href="https://twitter.com/fecocode" target="_blank">
             <a-icon type="twitter-circle" theme="filled" />
@@ -46,25 +51,36 @@
         </div>
       </a-layout-header>
       <a-breadcrumb class="breadcrumb">
-        <n-link :to="breadcrumb && index < breadcrumbs.length - 1 ? {name: breadcrumb.link} : ''" v-for="(breadcrumb, index) in breadcrumbs" :key="`b-${index}`">
-          <a-breadcrumb-item>{{breadcrumb ? $t(breadcrumb.name) : ''}}</a-breadcrumb-item>
-        </n-link>        
+        <n-link
+          :to="
+            breadcrumb && index < breadcrumbs.length - 1
+              ? { name: breadcrumb.link }
+              : ''
+          "
+          v-for="(breadcrumb, index) in breadcrumbs"
+          :key="`b-${index}`"
+        >
+          <a-breadcrumb-item>{{
+            breadcrumb ? $t(breadcrumb.name) : ""
+          }}</a-breadcrumb-item>
+        </n-link>
       </a-breadcrumb>
-      <a-layout-content
-        class="content"
-      >
+      <a-layout-content class="content">
         <Nuxt />
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script>
+
+
 export default {
   data() {
     return {
       collapsed: false,
     };
   },
+
   methods: {
     redirect(link){
       this.$router.push({name:link});
@@ -83,6 +99,11 @@ export default {
           name: this.$t('workOrders'),
           icon: 'tool',
           link: `work-orders___${this.$i18n.locale}`
+        },
+        {
+          name: 'login',
+          icon: 'user',
+          link: `login___${this.$i18n.locale}`
         }
       ]
     } 
