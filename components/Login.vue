@@ -1,5 +1,5 @@
 <template>
-  <a-col class="form">
+  <a-col>
     <a-form-model
       class="form__model"
       layout="vertical"
@@ -40,7 +40,7 @@
         </a-button>
         <a-row type="flex" justify="center">
           <a-col>
-            <a>¿Olvidaste tu contraseña?</a>
+            <a @click="recovery">¿Olvidaste tu contraseña?</a>
           </a-col>
         </a-row>
       </a-form-model-item>
@@ -48,40 +48,38 @@
   </a-col>
 </template>
 
-
 <script>
 export default {
-
-     data() {
+  name: "Login",
+  data() {
     return {
       userForm: {
-        user: '',
-        password: '',
-      },
+        user: "",
+        password: ""
+      }
     };
   },
   methods: {
     formSubmit() {
       console.log(this.userForm);
     },
-  },
-};
 
+    recovery() {
+      this.$emit("click");
+    }
+  }
+};
 </script>
 
-
-
 <style lang="scss" scoped>
-
-.container{
-  display:flex ;
+.container {
+  display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-  
 }
 
-.form{
+.form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,8 +87,6 @@ export default {
   width: 25%;
   background-color: #001529;
   border-radius: 10px;
-  box-shadow: 2px 2px 10px 1px black
+  box-shadow: 2px 2px 10px 1px black;
 }
-
-
 </style>
