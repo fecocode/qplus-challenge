@@ -56,39 +56,29 @@
   </a-row>
 </template>
 
-
 <script>
 export default {
-  layout: 'login',
-  name: 'layoutView',
+  layout: "login",
+  name: "layoutView",
   data() {
     return {
-      userForm: {
-        user: '',
-        password: '',
-      },
+      recovery: false
     };
   },
   methods: {
     formSubmit() {
       console.log(this.userForm);
     },
-  },
+    handleClick() {
+      this.recovery = !this.recovery;
+      console.log(this.recovery);
+    }
+  }
 };
 </script>
 
-
 <style lang="scss" scoped>
-
-.container{
-  display:flex ;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  
-}
-
-.form{
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +86,6 @@ export default {
   width: 25%;
   background-color: #001529;
   border-radius: 10px;
-  box-shadow: 2px 2px 10px 1px black
+  box-shadow: 2px 2px 10px 1px black;
 }
-
 </style>
