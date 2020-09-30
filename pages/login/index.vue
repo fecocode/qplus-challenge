@@ -1,9 +1,8 @@
-
-
-
 <template>
   <a-row class="container" type="flex" justify="center">
     <a-col class="form">
+      <!-- Component loginForm -->
+      <!-- <login-form /> -->
       <a-form-model
         class="form__model"
         layout="vertical"
@@ -49,6 +48,10 @@
           </a-row>
         </a-form-model-item>
       </a-form-model>
+      <!-- !Component loginForm -->
+      <!-- Recovery Password -->
+        <!--<recovery-password>-->
+      <!-- !Recovery Password -->
     </a-col>
   </a-row>
 </template>
@@ -56,6 +59,8 @@
 
 <script>
 export default {
+  layout: 'login',
+  name: 'layoutView',
   data() {
     return {
       userForm: {
