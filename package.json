@@ -1,5 +1,5 @@
 {
-  "name": "qplus-challenge",
+  "name": "zifos-dashboard",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -10,11 +10,15 @@
     "ant-design-vue": "^1.6.5",
     "axios": "^0.20.0",
     "moment": "^2.27.0",
+    "node-sass": "^4.14.1",
     "nuxt": "^2.14.4",
     "nuxt-i18n": "^6.13.12",
+    "sass-loader": "^10.0.2",
     "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.13.0"
+    "babel-plugin-import": "^1.13.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2"
   }
 }

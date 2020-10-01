@@ -10,7 +10,22 @@ module.exports = {
   modules: [
     'nuxt-i18n',
   ],
-
+  /* Ant colors settings
+  build: {
+    loaders: {
+      less: {
+        lessOptions: {
+          modifyVars: {
+            'primary-color': '#818979',
+            'layout-body-background': '#f1f5f0',
+            'layout-header-background': '#3d3e3d',
+            'table-row-hover-bg': '#eeefeb'
+          },
+          javascriptEnabled: true,
+        }
+      }
+    }
+  },*/
   i18n: {
     locales: [
       {
