@@ -1,5 +1,5 @@
 {
-  "name": "qplus-challenge",
+  "name": "zifos-dashboard",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
