@@ -75,6 +75,17 @@ export default {
       console.log(this.recovery);
       // routes.replace("PasswordRecovery");
     }
+  }, 
+  async mounted(){
+    try {
+      await this.$fireAuth.signInWithEmailAndPassword(
+        'franco.colares08@gmail.com',
+        'Zifos2020'
+      )
+      alert('logged');
+    } catch (e) {
+      alert(e)
+    }
   }
 };
 </script>

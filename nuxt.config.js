@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  head: {title: 'Qplus Challenge'},
+  head: {title: 'Zifos Dashboard'},
   target: 'static',
   components: true,
   css: ['ant-design-vue/dist/antd.less', '~/assets/main.scss'],
@@ -11,6 +11,26 @@ module.exports = {
   },
   modules: [
     'nuxt-i18n',
+    ['@nuxtjs/firebase', {
+      config: {
+        apiKey: process.env[`VUE_APP_FIREBASE_API_KEY`],
+        authDomain: process.env[`VUE_APP_FIREBASE_AUTH_DOMAIN`],
+        databaseURL: process.env[`VUE_APP_FIREBASE_URL_DB`],
+        projectId: process.env[`VUE_APP_FIREBASE_PROJECT_ID`],
+        storageBucket: process.env[`VUE_APP_FIREBASE_STORAGE_BUCKET`],
+        messagingSenderId: process.env[`VUE_APP_FIREBASE_MESSAGEINGSENDERID`],
+        appId: process.env[`VUE_APP_FIREBASE_APP_ID`]
+      },
+      services: {
+        auth: {
+          persistence: 'local',
+          initialize: {
+            onAuthStateChangedAction: 'onAuthStateChanged'
+          },
+          ssr: false,
+        }
+      }
+    }]
   ],
   build: {
     loaders: {
