@@ -47,14 +47,14 @@
         >
           Ingresar
         </a-button>
-
-        <a-row>
-          <a-col class="form-model__forgot">
-            <a @click="recovery">¿Olvidaste tu contraseña?</a>
+        <a-row type="flex" justify="center">
+          <a-col>
+            <nuxt-link to="/password-recovery"
+              >¿Olvidaste tu contraseña?</nuxt-link
+            >
           </a-col>
         </a-row>
       </a-form-model-item>
-
     </a-form-model>
   </a-col>
 </template>
@@ -83,7 +83,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 * {
   margin: 0;
   padding: 0;
@@ -127,5 +126,4 @@ export default {
     }
   }
 }
-
 </style>

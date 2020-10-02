@@ -65,6 +65,7 @@ export default {
       recovery: false
     };
   },
+
   methods: {
     formSubmit() {
       console.log(this.userForm);
@@ -72,6 +73,7 @@ export default {
     handleClick() {
       this.recovery = !this.recovery;
       console.log(this.recovery);
+      // routes.replace("PasswordRecovery");
     }
   }
 };
@@ -98,6 +100,4 @@ export default {
   margin-top: 7%;
   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.3);
 }
-
-
 </style>

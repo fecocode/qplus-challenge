@@ -1,8 +1,8 @@
 <template>
   <div id="welcome">
-    <a-icon type="cloud" theme="twoTone" class="cloud-1"/>
+    <a-icon type="cloud" theme="twoTone" class="cloud-1" />
     <a-icon type="cloud" theme="twoTone" class="cloud-2" />
-    <a-icon type="rocket" theme="twoTone" class="rocket"/>
+    <a-icon type="rocket" theme="twoTone" class="rocket" />
     <a-icon type="cloud" theme="twoTone" class="cloud-3" />
     <hr>
     <span><b>{{$t('welcome')}}</b></span>
@@ -12,15 +12,31 @@
 
 <script>
 export default {
-  meta:{
-    breadcrumbs:[
+  data() {
+    return {
+      // login: true
+    };
+  },
+
+  // methods: {
+  //   validateLogin() {
+  //     if (this.login) {
+  //       router.push("http://localhost:3000/es/");
+  //     } else {
+  //       router.push("http://localhost:3000/es/login");
+  //     }
+  //   }
+  // },
+
+  meta: {
+    breadcrumbs: [
       {
-        name: 'home',
-        link: 'index'
+        name: "home",
+        link: "index"
       }
     ]
   }
-}
+};
 </script>
 
 
@@ -50,11 +66,13 @@ export default {
 #welcome .rocket {
   margin: 10px auto;
   font-size: 100px;
-  animation: .5s infinite ease-in-out rocket alternate-reverse;
+  animation: 0.5s infinite ease-in-out rocket alternate-reverse;
   z-index: 4;
 }
 
-#welcome .cloud-1, .cloud-2, .cloud-3{
+#welcome .cloud-1,
+.cloud-2,
+.cloud-3 {
   position: absolute;
 }
 
@@ -82,28 +100,27 @@ export default {
 }
 
 @keyframes rocket {
-  0%{
-    transform: translateX(3px)
+  0% {
+    transform: translateX(3px);
   }
-  100%{
-    transform: translateX(-3px)
+  100% {
+    transform: translateX(-3px);
   }
 }
 @keyframes cloud {
-  0%{
+  0% {
     opacity: 0;
-    transform: translateY(-110px)
+    transform: translateY(-110px);
   }
-  10%{
+  10% {
     opacity: 1;
   }
-  90%{
+  90% {
     opacity: 1;
   }
-  100%{
+  100% {
     opacity: 0;
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
-
 </style>
