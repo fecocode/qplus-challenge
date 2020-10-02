@@ -1,8 +1,10 @@
+const path = require('path');
+
 module.exports = {
   head: {title: 'Qplus Challenge'},
   target: 'static',
   components: true,
-  css: ['ant-design-vue/dist/antd.css', '~/assets/main.css'],
+  css: ['ant-design-vue/dist/antd.less', '~/assets/main.scss'],
   plugins: ['@/plugins/antd-ui'],
   router: {
     middleware: ['breadcrumb'],
@@ -10,7 +12,19 @@ module.exports = {
   modules: [
     'nuxt-i18n',
   ],
-
+  build: {
+    loaders: {
+      less: {
+        lessOptions: {
+          modifyVars: {
+            // Modify ANT DESIGN variables here
+            'primary-color': '#1DA57A',
+          },
+          javascriptEnabled: true,
+        },
+      },
+    },
+  },
   i18n: {
     locales: [
       {

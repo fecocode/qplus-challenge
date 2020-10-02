@@ -6,6 +6,7 @@
     <a-icon type="cloud" theme="twoTone" class="cloud-3" />
     <hr>
     <span><b>{{$t('welcome')}}</b></span>
+    <a-button type="primary">Hola?</a-button>
   </div>
 </template>
 
@@ -23,19 +24,22 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
+@import '~/assets/variables';
 
-#welcome {
+// TODO Please, remove this comment and P L E A S E don't use id selectors (#).
+
+#welcome {  // ? This is NOT a good practice. Feco, I love you aneway.
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #1890ff;
+  color: $primary-color;
   height: 100%;
 }
 
 #welcome hr {
-  background: #1890ff;
+  background: $primary-color;
 }
 
 #welcome span {
