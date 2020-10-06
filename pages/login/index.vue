@@ -67,6 +67,15 @@ export default {
   },
 
   methods: {
+    computed: {
+      ...mapState({
+        authUser: (state) => state.authUser 
+      }),
+      ...mapGetters({
+        isLoggedIn: 'isLoggedIn'
+      })
+    },
+
     formSubmit() {
       console.log(this.userForm);
     },
@@ -75,7 +84,7 @@ export default {
       console.log(this.recovery);
       // routes.replace("PasswordRecovery");
     }
-  }, 
+  },
   async mounted(){
     try {
       await this.$fireAuth.signInWithEmailAndPassword(
