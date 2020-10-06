@@ -61,6 +61,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/variables';
+
 * {
   margin: 0;
   padding: 0;

@@ -1,2 +1,16 @@
 // Replicate ANT DESIGN variables here
 $primary-color: '#1DA57A';
+
+
+// Modify ANT DESIGN variables here
+
+// Links
+@link-color: rgb(21, 23, 33, 0.8);
+@link-hover-color: color(~`colorPalette('@{link-color}', 5) `);
+@link-active-color: color(~`colorPalette('@{link-color}', 7) `);
+@btn-primary-bg: rgb(21, 23, 33, 0.8);
+
+// Custom variables here
+$navy-blue: #151721;
+
+
